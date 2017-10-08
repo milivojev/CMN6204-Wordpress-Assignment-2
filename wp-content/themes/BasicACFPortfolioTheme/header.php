@@ -25,23 +25,10 @@
       <div class="container">
         <a class="navbar-brand" href="index.html"><?= get_bloginfo('name'); ?></a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon">miki</span>
+          <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav ml-auto">
-            <li>
-              <a href="about.html">Home</a>
-            </li>
-            <li>
-              <a href="about.html">My Work</a>
-            </li>
-            <li>
-              <a href="about.html">About</a>
-            </li>
-            <li>
-              <a href="about.html">Contact</a>
-            </li>
-          </ul>
+          <?php wp_nav_menu(['theme-location','main-menu']);?>
         </div>
       </div>
     </nav>

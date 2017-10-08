@@ -7,7 +7,7 @@ add_action('init','register_menus');
 
 function register_menus(){
 	register_nav_menus([
-		'Header Menu'=>'main menu for the top of the page'
+		'main-menu'=>'main menu for the top of the page'
 	]);
 }
 
