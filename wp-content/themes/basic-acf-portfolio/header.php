@@ -28,20 +28,10 @@
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav ml-auto">
-            <li>
-              <a href="about.html">Home</a>
-            </li>
-            <li>
-              <a href="about.html">My Work</a>
-            </li>
-            <li>
-              <a href="about.html">About</a>
-            </li>
-            <li>
-              <a href="about.html">Contact</a>
-            </li>
-          </ul>
+          <?php wp_nav_menu([
+              'menu_class'=>'navbar-nav ml-auto',
+              'theme_location'=>'main-menu'
+            ]);?>
         </div>
       </div>
     </nav>

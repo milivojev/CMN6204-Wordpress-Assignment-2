@@ -31,3 +31,10 @@ function custom_title(){
 	$result = $page_title . $title . " ~ ". $desc;
 
 }
+
+add_action('init','register_my_menus');
+
+function register_my_menus(){
+	register_nav_menus(['main-menu'=>'main menu for the top of the page']);
+}
+
