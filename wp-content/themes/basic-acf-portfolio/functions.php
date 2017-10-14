@@ -38,3 +38,8 @@ function register_my_menus(){
 	register_nav_menus(['main-menu'=>'main menu for the top of the page']);
 }
 
+function excerpt($content, $length = 180) {
+	$content = wp_strip_all_tags($content);
+	$content = substr($content, 0, $length);
+	echo $content;
+}
