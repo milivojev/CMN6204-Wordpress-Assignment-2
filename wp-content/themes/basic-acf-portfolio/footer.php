@@ -12,7 +12,7 @@
     <script src="/wp-content/themes/basic-acf-portfolio/vendor/popper/popper.min.js"></script>
     <script src="/wp-content/themes/basic-acf-portfolio/vendor/bootstrap/js/bootstrap.min.js"></script>
 
-    <?php //custom_scripts(); ?> 
+    <?php wp_footer(); ?> 
 
   </body>
 

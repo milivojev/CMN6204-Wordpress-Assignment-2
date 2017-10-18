@@ -13,7 +13,7 @@ get_header();
 
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
-          <a href="index.html">Home</a>
+          <a href="<?= home_url(); ?>">Home</a>
         </li>
         <li class="breadcrumb-item active">404</li>
       </ol>

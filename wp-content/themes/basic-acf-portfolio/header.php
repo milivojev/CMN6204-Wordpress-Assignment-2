@@ -11,11 +11,11 @@
       <title><?= custom_title(); ?></title>
 
     <!-- Bootstrap core CSS -->
-    <link href="/wp-content/themes/basic-acf-portfolio/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
+<!--     <link href="/wp-content/themes/basic-acf-portfolio/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+ -->
 <!--      Custom styles for this template  -->
-   <link href="/wp-content/themes/basic-acf-portfolio/css/modern-business.css" rel="stylesheet">
-  <?php //custom_styles(); ?>
+<!--    <link href="/wp-content/themes/basic-acf-portfolio/css/modern-business.css" rel="stylesheet"> -->
+  <?php wp_head(); ?>
   </head>
 
   <body>
@@ -29,7 +29,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <?php wp_nav_menu([
-              'menu_class'=>'navbar-nav ml-auto',
+              'menu_class'=>'navbar-nav  ml-auto',
               'theme_location'=>'main-menu'
             ]);?>
         </div>

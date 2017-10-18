@@ -29,7 +29,7 @@ define('DB_USER', 'admin');
 define('DB_PASSWORD', 'password');
 
 /** MySQL hostname */
-define('DB_HOST', 'portfolio.dev');
+define('DB_HOST', 'localhost');
 
 /** Database Charset to use in creating database tables. */
 define('DB_CHARSET', 'utf8mb4');
