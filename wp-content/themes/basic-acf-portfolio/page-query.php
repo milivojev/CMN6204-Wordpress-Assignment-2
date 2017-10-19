@@ -67,8 +67,8 @@ echo "<h1>Task #3:<br>  Write a query that outputs creation dates of all posts. 
 	]);
 	while($query->have_posts()){	
 		$query->the_post();
-		$posts_date = get_the_date();
-		echo the_title()." Date Created: ".$posts_date . "<br>";
+		$post_date = get_the_date();
+		echo the_title()." Date Created: ".$post_date . "<br>";
 	}
 echo "<h1>Task #4:<br>Write a query that shows all the posts for two tags of your choice at the same time.Output each post title and it's tag list.</h1>";
  	$query = new WP_Query([
@@ -124,11 +124,41 @@ echo "<h1> Task #6 <br> Copy the same query, but use the author ID in combinatio
 		// echo "</pre>";
 		echo "users name is: ".$user_details->display_name . " and email is: ". $user_email;
 	}
-	
+
+echo "<h1> Task #7<br>  Write a query that outputs all posts from a certain category of your choice. Set the output limit to unlimited number of posts (-1) , and order them by title in an alphabetical order.</h1>" ;	
+	$query = new WP_Query([
+			'post_type' => 'post',
+			'category_name' => 'applications',
+			'posts_per_page' => -1,
+			'orderby' => 'title',
+			'order' => 'ASC'
+	]);
+	while($query->have_posts()){
+		$query->the_post();
+		$title = the_title();
+		echo $title."<br>";
+	}
+	wp_reset_postdata();
+
+echo "<h1> Task #8<br>  Create a query that lists lists all posts, output limit is unlimited and are ordered by ascending alphabetical order. The output must be shown as an ordered list  with list items being each post's Post Title [Author Name] (Created Date).</h1>";	
 
 
-
-
+	$query = new WP_Query([
+			'post_type' => 'post',
+			'posts_per_page' => -1,
+			'orderby' => 'title',
+			'order' => 'ASC'
+	]);
+	echo "<ol>";
+	while($query->have_posts()){
+		$query->the_post();
+		$author_id = get_the_author_meta('ID');
+		$user_details = get_user_by('ID',$author_id);
+		$display_name = $user_details->display_name;
+		$post_date = get_the_date();
+		echo "<li>".the_title()."[".$display_name."] (".$post_date.")</li><br>";
+	}
+	echo "</ol>";
 
 
 
