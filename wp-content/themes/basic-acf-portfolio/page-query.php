@@ -39,3 +39,16 @@ echo '<h1>Let\'s try a more advanced example of a Query:<br>I am looking for all
 		echo '<br>';
 	}
 	wp_reset_postdata();
+
+echo '<h1>Task #1:<br> Write a query that outputs titles of only 2 posts that have last been modified</h1>';
+	$query = new WP_Query([
+		'post_type' => 'post',
+		'orderby' => 'modified',
+		'order' => 'DESC',
+		'posts_per_page' => 2
+		]);
+		while($query->have_posts()){
+			$query->the_post();
+			echo the_title() . "<br>";
+		}
+		wp_reset_postdata();
