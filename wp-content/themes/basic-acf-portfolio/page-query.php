@@ -7,10 +7,10 @@ echo '<h1>This is an example of a very basic WP_Query Loop.</h1>';
 	while($query->have_posts()) {
 		$query->the_post();
 		echo the_title();
-		echo "cat id is: ".the_category_ID();
+		// echo "cat id is: ".the_category_ID();
 		echo '<br>';
 	}
-	wp_reset_postdata();
+
 echo '<h1>Now let\'s look at what get_posts does.<br>Note that i have added a posts_per_page parameter. It simply limits the number of the posts returned.</h1>';
 	$posts = get_posts([
 		'post_type' => 'post',
@@ -33,11 +33,10 @@ echo '<h1>Let\'s try a more advanced example of a Query:<br>I am looking for all
 	while($query->have_posts()) {
 		$query->the_post();
 		echo the_title();
-		echo "category id is:";
-		echo the_category_id();
+		// echo "category id is:";
+		// echo the_category_id();
 		echo '<br>';
 	}
-	wp_reset_postdata();
 
 echo '<h1>Task #1:<br> Write a query that outputs titles of only 2 posts that have last been modified</h1>';
 	$query = new WP_Query([
@@ -50,7 +49,6 @@ echo '<h1>Task #1:<br> Write a query that outputs titles of only 2 posts that ha
 			$query->the_post();
 			echo the_title() . "<br>";
 		}
-		wp_reset_postdata();
 
 echo "<h1>Task #2:<br> Write a query that outputs titles of all pages!</h1>";	
 	$query = new WP_Query([
@@ -60,7 +58,6 @@ echo "<h1>Task #2:<br> Write a query that outputs titles of all pages!</h1>";
 			$query->the_post();	
 			echo the_title()."<br>";
 	}
-	wp_reset_postdata();
 
 echo "<h1>Task #3:<br>  Write a query that outputs creation dates of all posts. The posts must be sorted by created date, in an descending order</h1>";
 	$query = new WP_Query([
@@ -73,7 +70,6 @@ echo "<h1>Task #3:<br>  Write a query that outputs creation dates of all posts. 
 		$posts_date = get_the_date();
 		echo the_title()." Date Created: ".$posts_date . "<br>";
 	}
-	wp_reset_postdata();
 echo "<h1>Task #4:<br>Write a query that shows all the posts for two tags of your choice at the same time.Output each post title and it's tag list.</h1>";
  	$query = new WP_Query([
  		'post_type' => 'post',
@@ -81,7 +77,45 @@ echo "<h1>Task #4:<br>Write a query that shows all the posts for two tags of you
  	]);
  	while($query->have_posts()){
  		$query->the_post();
- 		 echo the_title() . the_tags('. Tags: ', ', ','.<br>');
+	    $post_title = the_title();
+		$post_tags = the_tags(' | Tags: ', ',');
+		echo $post_title . $post_tags . "<br>";
 
  	}
- 	wp_reset_postdata();
+ 	// wp_reset_postdata();
+
+echo "<h1> Task #5 <br> Write the same query, but limit post number to 3</h1>";
+	$query = new WP_Query([
+		'post_type' => 'post',
+ 		'tag' => 'PHP, Cloud',
+		'posts_per_page' => 3	
+	]);
+	while($query->have_posts()){
+			$query->the_post();
+			$post_title = the_title();
+			$post_tags = the_tags(' | Tags: ', ',');
+			echo $post_title . $post_tags ."<br>";
+
+ 	}
+echo "<h1> Task #5 <br> Write a query that finds the page by name Practice, and output it's author ID." ;
+	$query = new WP_Query([
+		'post_type' => 'page',
+		'pagename' => 'practice',
+	]);
+				
+	while($query->have_posts()){
+		$query->the_post();
+		$author_id = get_the_author_meta('ID');
+		$post_title = the_title();
+		echo the_title. " Author id: ".$author_id."<br>";
+	}	
+
+
+
+
+
+
+
+
+
+
