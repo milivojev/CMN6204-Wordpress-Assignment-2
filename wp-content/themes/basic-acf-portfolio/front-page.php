@@ -48,7 +48,7 @@
     <!-- Page Content -->
     <div class="container">
 
-      <h1 class="my-4"><?= get_bloginfo ('description'); ?></h1>
+      <h1 class="my-4"><?= get_bloginfo ('name'); ?></h1>
 
 
       <!-- Features Section -->
