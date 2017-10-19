@@ -46,7 +46,7 @@
         <div class="col-md-5">
           <h3><?= the_title();?></h3>
           <p><?=excerpt(get_the_content())?></p>
-          <a class="btn btn-primary" href="#">View Project
+          <a class="btn btn-primary" href="<?= get_permalink() ?>">View Project
             <span class="glyphicon glyphicon-chevron-right"></span>
           </a>
         </div>
@@ -55,7 +55,7 @@
       <!-- /.row -->
 
       <hr>
-        <?php endwhile; ?>
+      <?php endwhile; ?>
 
       
 
