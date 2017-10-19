@@ -81,7 +81,7 @@ echo "<h1>Task #4:<br>Write a query that shows all the posts for two tags of you
  	]);
  	while($query->have_posts()){
  		$query->the_post();
- 		 echo the_title()."<br>";
+ 		 echo the_title() . the_tags('. Tags: ', ', ','.<br>');
 
  	}
  	wp_reset_postdata();
