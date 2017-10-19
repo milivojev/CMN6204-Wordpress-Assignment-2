@@ -21,8 +21,8 @@
 
       <!-- Project One -->
        <?php
-          $curernt_category = $wp_query->get_queried_object();
-          $slug = $curernt_category->slug;
+          $curent_category = $wp_query->get_queried_object();
+          $slug = $curent_category->slug;
           // echo "<pre>";
           // var_dump($curernt_category);
           // echo "</pre>";

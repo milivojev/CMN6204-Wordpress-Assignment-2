@@ -39,30 +39,32 @@ the_post();
   <h3 class="my-4">Related Projects</h3>
 
   <div class="row">
+    <?php 
+     $curent_category = $wp_query->get_queried_object();
+      $slug = $cuernt_category->slug;
+     $postid = get_the_ID();
+     
+    $arguments = [
+      'post_type' => 'post',
+      'category_name' => 'applications',
+      'posts_per_page' => 3,
+      'post__not_in' => [$postid]
+    ];
+   
+    $query = new WP_Query($arguments);
+    while($query->have_posts()):
+      $query->the_post();
+      ?>
 
     <div class="col-md-3 col-sm-6 mb-4">
-      <a href="#">
+      <a href="<?= get_permalink() ?>">
         <img class="img-fluid" src="http://placehold.it/500x300" alt="">
+        <?php echo "<h6>".the_title()."</h6>"; ?>
       </a>
     </div>
+  <?php endwhile;?>
 
-    <div class="col-md-3 col-sm-6 mb-4">
-      <a href="#">
-        <img class="img-fluid" src="http://placehold.it/500x300" alt="">
-      </a>
-    </div>
-
-    <div class="col-md-3 col-sm-6 mb-4">
-      <a href="#">
-        <img class="img-fluid" src="http://placehold.it/500x300" alt="">
-      </a>
-    </div>
-
-    <div class="col-md-3 col-sm-6 mb-4">
-      <a href="#">
-        <img class="img-fluid" src="http://placehold.it/500x300" alt="">
-      </a>
-    </div>
+    
 
   </div>
   <!-- /.row -->
