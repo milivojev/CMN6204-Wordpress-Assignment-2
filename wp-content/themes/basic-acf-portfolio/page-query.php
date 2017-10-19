@@ -52,3 +52,12 @@ echo '<h1>Task #1:<br> Write a query that outputs titles of only 2 posts that ha
 			echo the_title() . "<br>";
 		}
 		wp_reset_postdata();
+
+echo "<h1>Task #2:<br> Write a query that outputs titles of all pages!</h1>";	
+		$query = new WP_Query([
+			'post_type' => 'page'
+		]);
+		while($query->have_posts()){
+				$query->the_post();
+				echo the_title()."<br>";
+		}
