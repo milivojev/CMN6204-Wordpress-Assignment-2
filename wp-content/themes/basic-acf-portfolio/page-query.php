@@ -76,10 +76,10 @@ echo "<h1>Task #4:<br>Write a query that shows all the posts for two tags of you
  		'tag' => 'PHP, Cloud'
  	]);
  	while($query->have_posts()){
- 		$query->the_post();
-	    $post_title = the_title();
-		$post_tags = the_tags(' | Tags: ', ',');
-		echo $post_title . $post_tags . "<br>";
+ 			$query->the_post();
+	    	$post_title = the_title();
+			$post_tags = the_tags(' | Tags: ', ',');
+			echo $post_title . $post_tags . "<br>";
 
  	}
  	// wp_reset_postdata();
@@ -104,14 +104,27 @@ echo "<h1> Task #5 <br> Write a query that finds the page by name Practice, and 
 	]);
 				
 	while($query->have_posts()){
-		$query->the_post();
-		$author_id = get_the_author_meta('ID');
-		$post_title = the_title();
-		echo the_title. " Author id: ".$author_id."<br>";
+			$query->the_post();
+			$author_id = get_the_author_meta('ID');
+			$post_title = the_title();
+			echo the_title. " Author id: ".$author_id."<br>";
 	}	
 
-
-
+echo "<h1> Task #6 <br> Copy the same query, but use the author ID in combination with the get_user_by() method. It will get you the user object, so that you can output Author's full name and email.</h1>" ;
+	$query = new WP_Query([
+		'post_type' => 'page',
+		'pagename' => 'welcome',
+	]);
+	while($query->have_posts()){
+		$query->the_post();
+		$author_id = get_the_author_meta('ID');
+		$user_details = get_user_by('ID',$author_id);
+		// echo "<pre>";
+		// var_dump($user_details);
+		// echo "</pre>";
+		echo "users name is: ".$user_details->display_name . " and email is: ". $user_email;
+	}
+	
 
 
 
