@@ -7,7 +7,7 @@ echo '<h1>This is an example of a very basic WP_Query Loop.</h1>';
 	while($query->have_posts()) {
 		$query->the_post();
 		echo the_title();
-		// echo "cat id is: ".the_category_ID();
+		echo "cat id is: ".the_category_ID();
 		echo '<br>';
 	}
 	wp_reset_postdata();
@@ -17,16 +17,15 @@ echo '<h1>Now let\'s look at what get_posts does.<br>Note that i have added a po
 		'posts_per_page' => 1
 	]);
 	foreach ($posts as $post) {
-		echo "<pre>";
+		// echo "<pre>";
 		var_dump($post);
-		echo "</pre>";
+		// echo "</pre>";
 	}
 	
 echo '<h1>Let\'s try a more advanced example of a Query:<br>I am looking for all "posts" from the category "front-end", that are tagged "css". I want them to be ordered by "modified date" and presented in ascending order. *your category and tag names may differ</h1>';
 	$query = new WP_Query([
 		'post_type' => 'post',
-		'category_name' => 'applications',
-		'category__in' =>[4],
+		'category_in' =>'applications',
 		'tag' => 'Application',
 		'orderby' => 'modified',
 		'order' => 'ASC',
@@ -34,8 +33,8 @@ echo '<h1>Let\'s try a more advanced example of a Query:<br>I am looking for all
 	while($query->have_posts()) {
 		$query->the_post();
 		echo the_title();
-		// echo "category id is:";
-		// echo the_category_id();
+		echo "category id is:";
+		echo the_category_id();
 		echo '<br>';
 	}
 	wp_reset_postdata();
@@ -54,10 +53,24 @@ echo '<h1>Task #1:<br> Write a query that outputs titles of only 2 posts that ha
 		wp_reset_postdata();
 
 echo "<h1>Task #2:<br> Write a query that outputs titles of all pages!</h1>";	
-		$query = new WP_Query([
-			'post_type' => 'page'
-		]);
-		while($query->have_posts()){
-				$query->the_post();
-				echo the_title()."<br>";
-		}
+	$query = new WP_Query([
+		'post_type' => 'page'
+	]);
+	while($query->have_posts()){
+			$query->the_post();	
+			echo the_title()."<br>";
+	}
+	wp_reset_postdata();
+
+echo "<h1>Task #3:<br>  Write a query that outputs creation dates of all posts. The posts must be sorted by created date, in an descending order</h1>";
+	$query = new WP_Query([
+		'post_type' => 'post',
+		'orderby' => 'date',
+		'order' => 'DESC'
+	]);
+	while($query->have_posts()){	
+		$query->the_post();
+		$posts_date = get_the_date();
+		echo the_title()." Date Created: ".$posts_date . "<br>";
+	}
+	wp_reset_postdata();
