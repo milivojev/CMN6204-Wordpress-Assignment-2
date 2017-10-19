@@ -74,3 +74,14 @@ echo "<h1>Task #3:<br>  Write a query that outputs creation dates of all posts. 
 		echo the_title()." Date Created: ".$posts_date . "<br>";
 	}
 	wp_reset_postdata();
+echo "<h1>Task #4:<br>Write a query that shows all the posts for two tags of your choice at the same time.Output each post title and it's tag list.</h1>";
+ 	$query = new WP_Query([
+ 		'post_type' => 'post',
+ 		'tag' => 'PHP, Cloud'
+ 	]);
+ 	while($query->have_posts()){
+ 		$query->the_post();
+ 		 echo the_title()."<br>";
+
+ 	}
+ 	wp_reset_postdata();
