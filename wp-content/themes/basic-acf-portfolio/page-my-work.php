@@ -3,13 +3,6 @@
 get_header();
 the_post();
 ?>
-<!-- <div class="container">
-      <div class="row">
-          <div class="col-lg-6">
-            <?php the_content(); ?>
-          </div>
-      </div>
- </div> -->
 
 
 <!-- Page Content -->
@@ -34,15 +27,20 @@ the_post();
       <div class="row">
 
         <?php 
-          $query = new WP_Query([
-            'post_type' => 'post',
-          ]);
-          while($query->have_posts()):
-            $query->the_post();
+          // $query = new WP_Query([
+          //   'post_type' => 'post',
+          // ]);
+          // while($query->have_posts()):
+          //   $query->the_post();
+            $categories = get_categories();
+            foreach ($categories as $category):
+              // echo "<pre>";
+              // var_dump($category);
+          // echo "</pre>";
             ?>
       
 
-        <div class="col-lg-4 mb-4">
+        <!-- <div class="col-lg-4 mb-4">
           <div class="card h-100">
             <h4 class="card-header"><?=the_title()?></h4>
             <div class="card-body">
@@ -52,10 +50,21 @@ the_post();
               <a href="<?=get_permalink()?>" class="btn btn-primary">learn more</a>
             </div>
           </div>
+        </div> -->
+         <div class="col-lg-4 mb-4">
+        <div class="card h-100">
+          <h4 class="card-header"> <?= $category->name ?> </h4>
+          <div class="card-body">
+            <p class="card-text"><?= $category->description ?></p>
+          </div>
+          <div class="card-footer">
+            <a href="<?= get_category_link($category->cat_ID); ?>" class="btn btn-primary">Learn More</a>
+          </div>
+         </div>
         </div>
 
         <?php 
-          endwhile;
+          endforeach;
           wp_reset_postdata();
         ?>
        
