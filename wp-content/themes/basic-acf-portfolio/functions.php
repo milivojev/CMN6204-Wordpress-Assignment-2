@@ -64,4 +64,10 @@ function custom_scripts () {
 	wp_enqueue_script('popper');
 	
 }
+
+// $name, $width,$crop
+add_image_size('Portfolio Featured', 700, 500, true);
+
+
+
 ?>
