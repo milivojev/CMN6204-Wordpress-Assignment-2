@@ -28,7 +28,7 @@ the_post();
     <div class="col-md-4">
       <?php  
         $content = get_the_content();
-        excerpt($content);
+        echo $content;
       ?>
     </div>
 
