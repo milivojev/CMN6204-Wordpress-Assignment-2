@@ -19,9 +19,14 @@ the_post();
         </li>
         <li class="breadcrumb-item active">Services</li>
       </ol>
+      <?php
+
+        $hero = get_field('hero_image');
+      ?>
+
 
       <!-- Image Header -->
-      <img class="img-fluid rounded mb-4" src="http://placehold.it/1200x300" alt="">
+      <img class="img-fluid rounded mb-4" src="<?= hero['sizes']['']" alt="">
 
       <!-- Marketing Icons Section -->
       <div class="row">

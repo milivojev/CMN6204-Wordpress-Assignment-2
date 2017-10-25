@@ -18,11 +18,20 @@ the_post();
     <li class="breadcrumb-item active">Portfolio Item</li>
   </ol>
 
+<pre>
+  <?php print_r(get_field('featured_image')); ?>
+</pre>
+
+
   <!-- Portfolio Item Row -->
   <div class="row">
 
     <div class="col-md-8">
-      <img class="img-fluid" src="http://placehold.it/750x500" alt="">
+      <?php 
+        $url = get_field('featured_image')['sizes']['Thumbnail'];
+         $alt = get_field('featured_image')['alt']; 
+         ?>
+      <img class="img-fluid" src="<?=$url; ?>" alt="<?= $alt; ?>">
     </div>
 
     <div class="col-md-4">
