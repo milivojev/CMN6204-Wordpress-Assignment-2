@@ -13,6 +13,9 @@
         </ol>
 
          <?php
+         // echo "<pre>";
+         //  var_dump(get_field('slide_description'));
+         //  echo "</pre>";
             $image = get_field('carousel_image')['sizes']['large'];
             $title = get_field('slide_title');
             $descrition = get_field('slide_description');

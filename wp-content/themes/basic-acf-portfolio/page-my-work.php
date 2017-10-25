@@ -1,10 +1,10 @@
 <?php 
- // Template Name: Portfolio expose Template
+ // Template Name: Portfolio exposee Template
 get_header();
 the_post();
 ?>
 
-
+    
 <!-- Page Content -->
     <div class="container">
 
@@ -26,7 +26,7 @@ the_post();
 
 
       <!-- Image Header -->
-      <img class="img-fluid rounded mb-4" src="<?= hero['sizes']['']" alt="">
+      <img class="img-fluid rounded mb-4" src="<?= $hero['sizes']['large'] ?>" alt="<?= $hero['alt']; ?>">
 
       <!-- Marketing Icons Section -->
       <div class="row">
@@ -38,6 +38,9 @@ the_post();
           // while($query->have_posts()):
           //   $query->the_post();
             $categories = get_categories();
+            // echo "<pre>";
+            // var_dump($categories);
+            // echo "</pre>";  
             foreach ($categories as $category):
               // echo "<pre>";
               // var_dump($category);
@@ -56,24 +59,26 @@ the_post();
             </div>
           </div>
         </div> -->
+
          <div class="col-lg-4 mb-4">
-        <div class="card h-100">
-          <h4 class="card-header"> <?= $category->name ?> </h4>
-          <div class="card-body">
+          <div class="card h-100">
+           <h4 class="card-header"> <?= $category->name ?> </h4>
+           <div class="card-body">
             <p class="card-text"><?= $category->description ?></p>
-          </div>
+            </div>
           <div class="card-footer">
             <a href="<?= get_category_link($category->cat_ID); ?>" class="btn btn-primary">Learn More</a>
           </div>
-         </div>
-        </div>
+         </div> <!-- col lg4 mb4 -->
+        </div>  <!-- row -->
 
         <?php 
           endforeach;
-          wp_reset_postdata();
+          // wp_reset_postdata();
         ?>
        
        
       </div>
       <!-- /.row -->
+
 <?php get_footer(); ?>
